@@ -13,11 +13,19 @@ inputs.forEach((input, index) => {
 
 	input.addEventListener("keydown", (event) => {
 		if (event.key === "Backspace") {
-			if (input.value === "" && index > 0) {
+			// If current input has a value → clear it
+			if (input.value !== "") {
+				input.value = "";
+				return;
+			}
+
+			// Move focus to previous and clear it
+			if (index > 0) {
 				inputs[index - 1].value = "";
 				inputs[index - 1].focus();
 			}
 		}
 	});
 });
+
 
